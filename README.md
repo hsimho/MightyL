@@ -9,7 +9,7 @@ $ git clone https://github.com/hsimho/MightyL
 $ cd MightyL
 ```
 Then download [ANTLR](https://www.antlr.org/download.html) (complete Java binaries jar) and modify
-```set(ANTLR_EXECUTABLE ...)``` in ```CMakeLists.txt``` to point to the jar file.
+```set(ANTLR_EXECUTABLE ...)``` in ```CMakeLists.txt``` to point to the jar file downloaded.
 Then
 ```
 $ mkdir build ; cd build
