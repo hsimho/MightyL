@@ -9,9 +9,8 @@ This is a C++ re-implementation of the MightyL tool, originally written in OCaml
 $ git clone git@github.com:hsimho/MightyL.git
 $ cd MightyL
 ```
-Then download [ANTLR](https://www.antlr.org/download.html) (complete Java binaries jar) and modify
-```set(ANTLR_EXECUTABLE ...)``` in ```CMakeLists.txt``` to point to the jar file downloaded.
-Then
+Edit ```CMakeLists.txt``` and modify ```set(ANTLR_EXECUTABLE ...)``` to point to [ANTLR](https://www.antlr.org/download.html)'s .jar file (complete Java binaries jar). Then
+
 ```
 $ git submodule init
 $ git submodule update
