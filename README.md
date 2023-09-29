@@ -1,6 +1,6 @@
 # MightyL: A Compositional Translation from MITL to Timed Automata
 
-This is a C++ re-implementation of the MightyL tool, originally written in OCaml and described in our CAV 2017 paper *MightyL: A Compositional Translation from MITL to Timed Automata*. This version currently only supports unitary constraints, so you can write things such as ```G (p -> F [0, 20) q && F (30, infty) r)``` but not ```F [10, 20] r```. Notably, it adopts *strict-future* semantics for until and release operators, so no "next" X is needed.
+This is a C++ re-implementation of the MightyL tool, originally written in OCaml and described in our CAV 2017 paper [*MightyL: A Compositional Translation from MITL to Timed Automata*](https://hal.science/hal-01525524). This version currently only supports unitary constraints, so you can write things such as ```G (p -> F [0, 20) q && F (30, infty) r)``` but not ```F [10, 20] r```. Notably, it adopts *strict-future* semantics for until and release operators, so no "next" X is needed.
 
 
 ## Build MightyL
