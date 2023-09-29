@@ -1,8 +1,9 @@
-# A C++ re-implementation of MightyL
-MightyL: A Compositional Translation from MITL to Timed Automata
+# MightyL: A Compositional Translation from MITL to Timed Automata
+
+This is a C++ re-implementation of the MightyL tool, originally written in OCaml and described in our CAV 2017 paper *MightyL: A Compositional Translation from MITL to Timed Automata*. This version currently only supports unitary constraints, so you can write things such as ```G (p -> F [0, 20) q && F (30, infty) r)``` but not ```F [10, 20] r```. Notably, it adopts *strict-future* semantics for until and release operators, so no "next" X is needed.
 
 
-## Building MightyL
+## Build MightyL
 
 ```console
 $ git clone https://github.com/hsimho/MightyL
@@ -12,8 +13,8 @@ Then download [ANTLR](https://www.antlr.org/download.html) (complete Java binari
 ```set(ANTLR_EXECUTABLE ...)``` in ```CMakeLists.txt``` to point to the jar file downloaded.
 Then
 ```
-git submodule init
-git submodule update
+$ git submodule init
+$ git submodule update
 ```
 to check out [BuDDy](https://github.com/jgcoded/BuDDy). Finally,
 ```
