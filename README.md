@@ -6,7 +6,7 @@ This is a C++ re-implementation of the MightyL tool, originally written in OCaml
 ## Build MightyL
 
 ```console
-$ git clone https://github.com/hsimho/MightyL
+$ git clone git@github.com:hsimho/MightyL.git
 $ cd MightyL
 ```
 Then download [ANTLR](https://www.antlr.org/download.html) (complete Java binaries jar) and modify
