@@ -24,7 +24,6 @@ $ make
 	author        = {Thomas Brihaye and Gilles Geeraerts and Hsi-Ming Ho and Benjamin Monmege},
 	booktitle     = {Proceedings of the 29th International Conference on Computer Aided Verification, Part I},
 	doi           = {10.1007/978-3-319-63387-9_21},
-	isbn          = {['978-3-319-63386-2', '978-3-319-63387-9']},
 	pages         = {421--440},
 	publisher     = {Springer},
 	title         = {MightyL: A Compositional Translation from MITL to Timed Automata},
