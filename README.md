@@ -5,7 +5,7 @@ This is a C++ re-implementation of the MightyL tool, originally written in OCaml
 
 ## Build MightyL
 
-The current version relies on [MoniTAal](https://github.com/DEIS-Tools/MoniTAal), which itself depends on [Boost](https://www.boost.org/) ```>= 1.40```.
+The current version makes use of [MoniTAal](https://github.com/DEIS-Tools/MoniTAal), which itself depends on [Boost](https://www.boost.org/) ```>= 1.40```.
 ```console
 $ git clone git@github.com:hsimho/MightyL.git
 $ cd MightyL
