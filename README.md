@@ -12,6 +12,11 @@ Then download [ANTLR](https://www.antlr.org/download.html) (complete Java binari
 ```set(ANTLR_EXECUTABLE ...)``` in ```CMakeLists.txt``` to point to the jar file downloaded.
 Then
 ```
+git submodule init
+git submodule update
+```
+to check out [BuDDy](https://github.com/jgcoded/BuDDy). Finally,
+```
 $ mkdir build ; cd build
 $ cmake ..
 $ make
