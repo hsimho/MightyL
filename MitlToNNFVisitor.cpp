@@ -1,12 +1,10 @@
 
 // Generated from Mitl.g4 by ANTLR 4.13.0
-//
 
-#include "antlr4-runtime.h"
 #include "MitlToNNFVisitor.h"
 
 
-namespace antlrcpptest {
+namespace mightylcpp {
 
     std::any MitlToNNFVisitor::visitMain(MitlParser::MainContext *ctx) {
         return visit(ctx->formula());
@@ -491,5 +489,5 @@ namespace antlrcpptest {
     
 
 
-}  // namespace antlrcpptest
+}  // namespace mightylcpp
 

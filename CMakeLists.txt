@@ -35,7 +35,7 @@ find_package(ANTLR REQUIRED)
 
 # Call macro to add lexer and grammar to your build dependencies.
 antlr_target(MitlGrammar Mitl.g4 VISITOR
-             PACKAGE antlrcpptest)
+             PACKAGE mightylcpp)
 
 # include generated files in project environment
 include_directories(${ANTLR_MitlGrammar_OUTPUT_DIR})
@@ -67,6 +67,8 @@ add_executable(mightyl main.cpp
                MitlAtomNumberingVisitor.cpp
                MitlCollectTemporalVisitor.cpp
                MitlGetBDDVisitor.cpp
+               TAwithBDDEdges.cpp
+               MightyL.cpp
                ${ANTLR_MitlGrammar_CXX_OUTPUTS})
 
 

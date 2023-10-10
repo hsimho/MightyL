@@ -11,7 +11,7 @@
 #include "MitlVisitor.h"
 
 
-namespace antlrcpptest {
+namespace mightylcpp {
 
 /**
  * This class provides an empty implementation of MitlVisitor, which can be
@@ -19,13 +19,13 @@ namespace antlrcpptest {
  */
 class  MitlCheckNNFVisitor : public MitlVisitor {
 
-private:
-
-    std::vector<std::string> ruleNames;
+//private:
+//
+//    std::vector<std::string> ruleNames;
 
 public:
 
-    void loadParser(MitlParser *parser);
+//    void loadParser(const MitlParser& parser);
 
     std::any visitMain(MitlParser::MainContext *ctx) override;
 
@@ -64,4 +64,4 @@ public:
 
 };
 
-}  // namespace antlrcpptest
+}  // namespace mightylcpp
