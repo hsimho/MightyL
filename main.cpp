@@ -105,15 +105,26 @@ int main(int argc, const char ** argv) {
 
     std::cout << "<<<<<< Monitoring >>>>>>\n\n";
     std::vector<monitaal::concrete_input> word1 = {
-        monitaal::concrete_input(0, "000"),
-        monitaal::concrete_input(2.5, "100"),
-        monitaal::concrete_input(10, "000"),
-        monitaal::concrete_input(2.1, "000"),
-        monitaal::concrete_input(10, "000"),
-        monitaal::concrete_input(5, "001"),
-        monitaal::concrete_input(10, "000"),
-        monitaal::concrete_input(1, "000"),
-        monitaal::concrete_input(1, "000")};
+        monitaal::concrete_input(0, "00000"),
+        monitaal::concrete_input(2.5, "00000"),
+        monitaal::concrete_input(10, "00000"),
+        monitaal::concrete_input(2.1, "00000"),
+        monitaal::concrete_input(10, "00000"),
+        monitaal::concrete_input(5, "00000"),
+        monitaal::concrete_input(10, "00000"),
+        monitaal::concrete_input(10, "00000"),
+        monitaal::concrete_input(2.1, "00000"),
+        monitaal::concrete_input(10, "00000"),
+        monitaal::concrete_input(5, "00000"),
+        monitaal::concrete_input(10, "00000"),
+        monitaal::concrete_input(1, "00000"),
+        monitaal::concrete_input(10, "00000"),
+        monitaal::concrete_input(2.1, "00000"),
+        monitaal::concrete_input(10, "00000"),
+        monitaal::concrete_input(5, "00000"),
+        monitaal::concrete_input(10, "00000"),
+        monitaal::concrete_input(1, "00000"),
+        monitaal::concrete_input(1, "00000")};
 
 //    std::vector<monitaal::concrete_input> word2 = {
 //        monitaal::concrete_input(0, "000"),

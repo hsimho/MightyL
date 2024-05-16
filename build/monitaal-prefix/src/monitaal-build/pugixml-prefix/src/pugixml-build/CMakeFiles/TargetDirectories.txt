@@ -1,0 +1,7 @@
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-build/CMakeFiles/pugixml-static.dir
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-build/CMakeFiles/edit_cache.dir
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-build/CMakeFiles/rebuild_cache.dir
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-build/CMakeFiles/list_install_components.dir
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-build/CMakeFiles/install.dir
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-build/CMakeFiles/install/local.dir
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-build/CMakeFiles/install/strip.dir

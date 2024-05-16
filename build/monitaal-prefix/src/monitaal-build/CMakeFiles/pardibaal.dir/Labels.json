@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/CMakeFiles/pardibaal"
+		},
+		{
+			"file" : "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/CMakeFiles/pardibaal.rule"
+		},
+		{
+			"file" : "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/CMakeFiles/pardibaal-complete.rule"
+		},
+		{
+			"file" : "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pardibaal-prefix/src/pardibaal-stamp/pardibaal-build.rule"
+		},
+		{
+			"file" : "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pardibaal-prefix/src/pardibaal-stamp/pardibaal-configure.rule"
+		},
+		{
+			"file" : "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pardibaal-prefix/src/pardibaal-stamp/pardibaal-download.rule"
+		},
+		{
+			"file" : "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pardibaal-prefix/src/pardibaal-stamp/pardibaal-install.rule"
+		},
+		{
+			"file" : "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pardibaal-prefix/src/pardibaal-stamp/pardibaal-mkdir.rule"
+		},
+		{
+			"file" : "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pardibaal-prefix/src/pardibaal-stamp/pardibaal-patch.rule"
+		},
+		{
+			"file" : "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pardibaal-prefix/src/pardibaal-stamp/pardibaal-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"pardibaal"
+		],
+		"name" : "pardibaal"
+	}
+}

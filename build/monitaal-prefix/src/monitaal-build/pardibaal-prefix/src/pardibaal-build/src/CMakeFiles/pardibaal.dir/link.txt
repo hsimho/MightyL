@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../lib/libpardibaal.a CMakeFiles/pardibaal.dir/pardibaal/Federation.cpp.o CMakeFiles/pardibaal.dir/pardibaal/DBM.cpp.o CMakeFiles/pardibaal.dir/pardibaal/bounds_table_t.cpp.o CMakeFiles/pardibaal.dir/pardibaal/bound_t.cpp.o CMakeFiles/pardibaal.dir/pardibaal/difference_bound_t.cpp.o
+/usr/bin/ranlib ../lib/libpardibaal.a

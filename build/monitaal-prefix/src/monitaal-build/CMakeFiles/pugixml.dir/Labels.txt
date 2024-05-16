@@ -1,0 +1,13 @@
+# Target labels
+ pugixml
+# Source files and their labels
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/CMakeFiles/pugixml
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/CMakeFiles/pugixml.rule
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/CMakeFiles/pugixml-complete.rule
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-stamp/pugixml-build.rule
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-stamp/pugixml-configure.rule
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-stamp/pugixml-download.rule
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-stamp/pugixml-install.rule
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-stamp/pugixml-mkdir.rule
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-stamp/pugixml-patch.rule
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-stamp/pugixml-update.rule

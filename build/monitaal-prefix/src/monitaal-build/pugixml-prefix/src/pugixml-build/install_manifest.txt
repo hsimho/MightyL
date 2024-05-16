@@ -1,0 +1,8 @@
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/external/lib/libpugixml.a
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/external/lib/cmake/pugixml/pugixml-targets.cmake
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/external/lib/cmake/pugixml/pugixml-targets-release.cmake
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/external/lib/cmake/pugixml/pugixml-config-version.cmake
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/external/lib/cmake/pugixml/pugixml-config.cmake
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/external/lib/pkgconfig/pugixml.pc
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/external/include/pugiconfig.hpp
+/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/external/include/pugixml.hpp

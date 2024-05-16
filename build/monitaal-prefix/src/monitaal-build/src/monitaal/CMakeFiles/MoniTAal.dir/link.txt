@@ -1,0 +1,2 @@
+/usr/bin/ar qc libMoniTAal.a CMakeFiles/MoniTAal.dir/TA.cpp.o CMakeFiles/MoniTAal.dir/state.cpp.o CMakeFiles/MoniTAal.dir/Fixpoint.cpp.o CMakeFiles/MoniTAal.dir/Parser.cpp.o CMakeFiles/MoniTAal.dir/Monitor.cpp.o CMakeFiles/MoniTAal.dir/EventParser.cpp.o
+/usr/bin/ranlib libMoniTAal.a

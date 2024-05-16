@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/hsimho/MightyL/build/CMakeFiles/monitaal"
+		},
+		{
+			"file" : "/home/hsimho/MightyL/build/CMakeFiles/monitaal.rule"
+		},
+		{
+			"file" : "/home/hsimho/MightyL/build/CMakeFiles/monitaal-complete.rule"
+		},
+		{
+			"file" : "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-stamp/monitaal-build.rule"
+		},
+		{
+			"file" : "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-stamp/monitaal-configure.rule"
+		},
+		{
+			"file" : "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-stamp/monitaal-download.rule"
+		},
+		{
+			"file" : "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-stamp/monitaal-install.rule"
+		},
+		{
+			"file" : "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-stamp/monitaal-mkdir.rule"
+		},
+		{
+			"file" : "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-stamp/monitaal-patch.rule"
+		},
+		{
+			"file" : "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-stamp/monitaal-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"monitaal"
+		],
+		"name" : "monitaal"
+	}
+}

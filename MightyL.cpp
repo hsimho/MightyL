@@ -3408,6 +3408,12 @@ namespace mightylcpp {
             nnf_in = std::any_cast<std::string>(to_nnf_visitor.visitMain(phi_));
 
 
+        } else {
+
+            MitlToNNFVisitor to_nnf_visitor;
+
+            nnf_in = std::any_cast<std::string>(to_nnf_visitor.visitMain(phi_));
+
         }
 
         std::cout << "\nInput formula (in NNF):\n";

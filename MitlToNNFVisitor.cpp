@@ -461,7 +461,7 @@ namespace mightylcpp {
 
         if (ctx->negated) {
 
-            output = std::string(ctx->depth() * 1, ' ') + "!" + ctx->Idfr()->getText();
+            output = std::string(ctx->depth() * 1, ' ') + "(!" + ctx->Idfr()->getText() + ")";
             return output;
 
         } else {
