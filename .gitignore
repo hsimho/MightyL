@@ -5,6 +5,7 @@
 /**/target
 /**/bin
 /build
+/external
 
 # Visual Studio Generated
 .antlr
