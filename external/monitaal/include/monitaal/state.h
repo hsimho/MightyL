@@ -142,8 +142,6 @@ namespace monitaal {
 
         [[nodiscard]] bool is_empty() const;
 
-        [[nodiscard]] bool is_included_in(const concrete_state_t& state) const;
-
         [[nodiscard]] bool is_included_in(const symbolic_state_t& states) const;
 
         [[nodiscard]] bool is_included_in(const symbolic_state_map_t& states) const;
@@ -152,12 +150,11 @@ namespace monitaal {
         [[nodiscard]] bool satisfies(const constraint_t& constraint) const;
         [[nodiscard]] bool satisfies(const constraints_t& constraints) const;
 
-        void print(std::ostream& out, const TA& T) const;
-
     private:
         location_id_t _location;
         valuation_t _valuation;
     };
+
 }
 
 #endif //MONITAAL_STATE_T_H

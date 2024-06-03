@@ -4,14 +4,14 @@
 0d322a6ba9582d820ad6cd65c8511753 CMakeFiles/pugixml
 67c55a1ea9951af703d43fda5e35c8fd CMakeFiles/pugixml-complete
 072a696711efa0c7bb38f8f9ba38769a pardibaal-prefix/src/pardibaal-stamp/pardibaal-build
-54004771d77be4dae5d72e77f0328a03 pardibaal-prefix/src/pardibaal-stamp/pardibaal-configure
+d061890b083810735e0eb87d9723cdd9 pardibaal-prefix/src/pardibaal-stamp/pardibaal-configure
 ac4495c2966c8cdbc577a2c27b4cbd69 pardibaal-prefix/src/pardibaal-stamp/pardibaal-download
 3c57c74d4610a6f0b641cea4f5e9fe22 pardibaal-prefix/src/pardibaal-stamp/pardibaal-install
 0a32b492f717c3e1f44b6a53415939f0 pardibaal-prefix/src/pardibaal-stamp/pardibaal-mkdir
 d5a3e1d7ac19cbc0087c1c0a96ffb564 pardibaal-prefix/src/pardibaal-stamp/pardibaal-patch
 c544d764e00ece77c55e9628713db93e pardibaal-prefix/src/pardibaal-stamp/pardibaal-update
 d0efcb64d98a6844f604f8035b71abf8 pugixml-prefix/src/pugixml-stamp/pugixml-build
-f2cedf9efc35886302d0cbd97c77d904 pugixml-prefix/src/pugixml-stamp/pugixml-configure
+f630a04960c3d9b7ab4ec593c0dcffe8 pugixml-prefix/src/pugixml-stamp/pugixml-configure
 da3dcfa4da60cc9b9bcd0755bd7e7653 pugixml-prefix/src/pugixml-stamp/pugixml-download
 6c5d2f40709ddd03c67826e328d14fa5 pugixml-prefix/src/pugixml-stamp/pugixml-install
 fbfe3123176d3e0996457cd7b9ae264b pugixml-prefix/src/pugixml-stamp/pugixml-mkdir

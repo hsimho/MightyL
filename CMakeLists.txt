@@ -53,7 +53,7 @@ add_subdirectory (${EXTERNAL_INSTALL_LOCATION}/buddy buddy)
 
 ExternalProject_add(monitaal
     GIT_REPOSITORY git@github.com:DEIS-Tools/MoniTAal.git
-    GIT_TAG main
+    GIT_TAG e43cde2
     CMAKE_ARGS (
         -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
         -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}

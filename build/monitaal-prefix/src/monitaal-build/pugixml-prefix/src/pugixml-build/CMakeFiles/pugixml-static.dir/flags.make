@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml/src
 
-CXX_FLAGS = -O3 -DNDEBUG -fPIC -std=gnu++11
+CXX_FLAGS = -fPIC -std=gnu++11
 

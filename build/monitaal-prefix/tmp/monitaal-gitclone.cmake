@@ -41,12 +41,12 @@ endif()
 
 execute_process(
   COMMAND "/usr/bin/git" 
-          checkout "main" --
+          checkout "e43cde2" --
   WORKING_DIRECTORY "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal"
   RESULT_VARIABLE error_code
 )
 if(error_code)
-  message(FATAL_ERROR "Failed to checkout tag: 'main'")
+  message(FATAL_ERROR "Failed to checkout tag: 'e43cde2'")
 endif()
 
 set(init_submodules TRUE)

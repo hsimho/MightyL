@@ -6,7 +6,10 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include <chrono>
 
+#include "Fixpoint.h"
+#include "state.h"
 #include "types.h"
 #include "TA.h"
 
@@ -62,146 +65,33 @@ int main(int argc, const char ** argv) {
 
     MitlParser::MainContext* original_formula = parser.main();
 
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     monitaal::TA pos = build_ta_from_main(original_formula);
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
-    nnf_in = "!(" + nnf_in + ")";
+   
+    std::cout << "Constructing TA took = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
 
-    input.load(nnf_in);
-    lexer.setInputStream(&input);
-    tokens.setTokenSource(&lexer);
-    parser.setTokenStream(&tokens);
-    original_formula = parser.main();
+    std::chrono::steady_clock::time_point begin2 = std::chrono::steady_clock::now();
+    std::cout << "<<<<<< Calculating fixpoints >>>>>>" << std::endl;
+    auto recurrent = monitaal::Fixpoint::buchi_accept_fixpoint(pos);
 
-    monitaal::TA neg = build_ta_from_main(original_formula);
-
-    std::cout << "\npos:\n" << std::endl;
-    std::cout << pos;
-
-    std::cout << "\nneg:\n" << std::endl;
-    std::cout << neg;
-
-    // std::cout << std::endl;
-
-    // std::cout << std::setw(20) << "# of locations: " << std::setw(10) << projected.locations().size() << std::setw(0) << std::endl;
-    // std::cout << std::setw(20) << "# of clocks: " << std::setw(10) << projected.locations().size() << std::setw(0) << std::endl;
-
-    // std::cout << std::endl;
-
-    // for (const auto & [k, v] : projected.locations()) {
-
-    //     std::cout << std::setw(12) << "location: " << std::setw(10) << v.id() << " (" << v.name() << ")" << (v.is_accept() ? "(acc)" : "") << std::setw(0) << std::endl;
-    //     std::cout << std::setw(20) << "# outgoing: " << std::setw(10) << projected.edges_from(k).size() << std::setw(0) << std::endl;
-    //     std::cout << std::setw(20) << "# incoming: " << std::setw(10) << projected.edges_to(k).size() << std::setw(0) << std::endl;
-
-    // }
-
-    // std::cout << projected;
-    //
-    std::cout << "<<<<<< Calculating fixpoints >>>>>>\n\nPositive fixpoint states:\n";
-    monitaal::Fixpoint::buchi_accept_fixpoint(pos).print(std::cout, pos);
-
-    std::cout << "Negative fixpoint states:\n";
-    monitaal::Fixpoint::buchi_accept_fixpoint(neg).print(std::cout, neg);
-
-    std::cout << "<<<<<< Monitoring >>>>>>\n\n";
-    std::vector<monitaal::concrete_input> word1 = {
-        monitaal::concrete_input(0, "00000"),
-        monitaal::concrete_input(2.5, "00000"),
-        monitaal::concrete_input(10, "00000"),
-        monitaal::concrete_input(2.1, "00000"),
-        monitaal::concrete_input(10, "00000"),
-        monitaal::concrete_input(5, "00000"),
-        monitaal::concrete_input(10, "00000"),
-        monitaal::concrete_input(10, "00000"),
-        monitaal::concrete_input(2.1, "00000"),
-        monitaal::concrete_input(10, "00000"),
-        monitaal::concrete_input(5, "00000"),
-        monitaal::concrete_input(10, "00000"),
-        monitaal::concrete_input(1, "00000"),
-        monitaal::concrete_input(10, "00000"),
-        monitaal::concrete_input(2.1, "00000"),
-        monitaal::concrete_input(10, "00000"),
-        monitaal::concrete_input(5, "00000"),
-        monitaal::concrete_input(10, "00000"),
-        monitaal::concrete_input(1, "00000"),
-        monitaal::concrete_input(1, "00000")};
-
-//    std::vector<monitaal::concrete_input> word2 = {
-//        monitaal::concrete_input(0, "000"),
-//        monitaal::concrete_input(101, "000")};
-
-    monitaal::Concrete_monitor monitor(pos, neg);
-
-    // std::cout << "Monitoring word: ";
-    // for (const auto& c : word1)
-    //     std::cout << "(" << c.label << ", " << c.time <<  ") ";
+    auto initial_state = monitaal::symbolic_state_t(pos.initial_location(), monitaal::Federation::zero(pos.number_of_clocks()));
 
 
-    for (const auto& e : word1) {
+    if (initial_state.is_included_in(monitaal::Fixpoint::reach(recurrent, pos))) {
 
-        monitor.input(e);
+        std::cout << "SATISFIABLE" << std::endl;
 
-        std::cout << "\nInput event read: " << "(" <<  e.label << ", " <<  e.time << ")" << std::endl;
+    } else {
 
-        std::cout << "\nConclusion: " << monitor.status() << "\nState estimate positive:\n";
-        
-        int i;
-        if (monitor.positive_state_estimate().empty())
-            std::cout << "empty\n";
-        else
-            for (const auto& s : monitor.positive_state_estimate()) {
-                std::cout << pos.locations().at(s.location()).name() << " : ";
-                i = 0;
-                for (const auto& v : s.valuation())
-                    std::cout << pos.clock_name(i++) << " = " << v << ", ";
-                std::cout << "\n";
-            }
-
-        std::cout << "State estimate negative:\n";
-        if (monitor.negative_state_estimate().empty())
-            std::cout << "empty\n";
-        else
-            for (const auto& s : monitor.negative_state_estimate()) {
-                std::cout << neg.locations().at(s.location()).name() << " : ";
-                i = 0;
-                for (const auto& v : s.valuation())
-                    std::cout << neg.clock_name(i++) << " = " << v << ", ";
-                std::cout << "\n";
-            }
+        std::cout << "NOT SATISFIABLE" << std::endl;
 
     }
 
-    // std::cout << "\nMonitoring word: ";
-    // for (const auto& c : word2)
-    //     std::cout << "(" << c.label << ", " << c.time <<  ") ";
+    std::chrono::steady_clock::time_point end2 = std::chrono::steady_clock::now();
+    std::cout << "Fixpoint took = " << std::chrono::duration_cast<std::chrono::milliseconds>(end2 - begin2).count() << "[ms]" << std::endl;
 
-    // monitor.input(word2);
-
-    // std::cout << "\nConclusion: " << monitor.status() << "\nState estimate positive:\n";
-
-    // if (monitor.positive_state_estimate().empty())
-    //     std::cout << "empty\n";
-    // else
-    //     for (const auto& s : monitor.positive_state_estimate()) {
-    //         std::cout << pos.locations().at(s.location()).name() << " : ";
-    //         i = 0;
-    //         for (const auto& v : s.valuation())
-    //             std::cout << pos.clock_name(i++) << " = " << v << ", ";
-    //         std::cout << "\n";
-    //     }
-
-    // std::cout << "State estimate negative:\n";
-    // if (monitor.negative_state_estimate().empty())
-    //     std::cout << "empty\n";
-    // else
-    //     for (const auto& s : monitor.negative_state_estimate()) {
-    //         std::cout << neg.locations().at(s.location()).name() << " : ";
-    //         i = 0;
-    //         for (const auto& v : s.valuation()) {
-    //             std::cout << neg.clock_name(i++) << " = " << v << ", ";
-    //         }
-    //         std::cout << "\n";
-    //     }
 
     bdd_done();
 

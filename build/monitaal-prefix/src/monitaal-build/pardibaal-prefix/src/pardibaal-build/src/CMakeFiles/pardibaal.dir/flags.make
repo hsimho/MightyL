@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pardibaal-prefix/src/pardibaal-build/external/include -I/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pardibaal-prefix/src/pardibaal/include -I/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pardibaal-prefix/src/pardibaal/src
 
-CXX_FLAGS = -O3 -DNDEBUG -O2 -DNDEBUG -DNEXCEPTIONS -Wall -Wpedantic -fPIC -std=gnu++20
+CXX_FLAGS = -g -Wall -Wpedantic -fPIC -std=gnu++20
 

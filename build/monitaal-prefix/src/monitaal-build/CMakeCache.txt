@@ -20,6 +20,8 @@ Boost_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0
 //Path to a file.
 Boost_INCLUDE_DIR:PATH=/usr/include
 
+Boost_PROGRAM_OPTIONS_LIBRARY_RELEASE:STRING=/usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.83.0
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 
@@ -224,12 +226,6 @@ CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 //Git command line client
 GIT_EXECUTABLE:FILEPATH=/usr/bin/git
 
-//Builds benchmark binary
-MONITAAL_BUILD_BIN:BOOL=OFF
-
-//Builds tests
-MONITAAL_BUILD_TEST:BOOL=OFF
-
 //Value Computed by CMake
 MoniTAal_BINARY_DIR:STATIC=/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/src/monitaal
 
@@ -241,6 +237,9 @@ MoniTAal_SOURCE_DIR:STATIC=/home/hsimho/MightyL/build/monitaal-prefix/src/monita
 
 //The directory containing a CMake configuration file for boost_headers.
 boost_headers_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/boost_headers-1.83.0
+
+//The directory containing a CMake configuration file for boost_program_options.
+boost_program_options_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/boost_program_options-1.83.0
 
 //Value Computed by CMake
 monitaal_BINARY_DIR:STATIC=/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build
@@ -402,11 +401,13 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Boost
-FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake][c ][v1.83.0()]
+FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake][cfound components: program_options ][v1.83.0(1.40)]
 //ADVANCED property for variable: GIT_EXECUTABLE
 GIT_EXECUTABLE-ADVANCED:INTERNAL=1
 //linker supports push/pop state
 _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 //ADVANCED property for variable: boost_headers_DIR
 boost_headers_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: boost_program_options_DIR
+boost_program_options_DIR-ADVANCED:INTERNAL=1
 

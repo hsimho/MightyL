@@ -55,7 +55,6 @@ CMakeFiles/pugixml-static.dir/src/pugixml.cpp.o: /home/hsimho/MightyL/build/moni
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
-  /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/c++/13/debug/debug.h \
   /usr/include/c++/13/bits/streambuf_iterator.h \
   /usr/include/c++/13/streambuf \
@@ -137,11 +136,8 @@ CMakeFiles/pugixml-static.dir/src/pugixml.cpp.o: /home/hsimho/MightyL/build/moni
   /usr/include/x86_64-linux-gnu/bits/select.h \
   /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
-  /usr/include/x86_64-linux-gnu/bits/select2.h \
   /usr/include/alloca.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
-  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
   /usr/include/c++/13/bits/std_abs.h \
   /usr/include/c++/13/cstdio \
   /usr/include/stdio.h \
@@ -151,8 +147,6 @@ CMakeFiles/pugixml-static.dir/src/pugixml.cpp.o: /home/hsimho/MightyL/build/moni
   /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
   /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
   /usr/include/c++/13/cerrno \
   /usr/include/errno.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
@@ -172,8 +166,6 @@ CMakeFiles/pugixml-static.dir/src/pugixml.cpp.o: /home/hsimho/MightyL/build/moni
   /usr/include/c++/13/stdlib.h \
   /usr/include/string.h \
   /usr/include/strings.h \
-  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
-  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/assert.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h \
@@ -196,7 +188,6 @@ CMakeFiles/pugixml-static.dir/src/pugixml.cpp.o: /home/hsimho/MightyL/build/moni
   /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
   /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
   /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
-  /usr/include/x86_64-linux-gnu/bits/mathinline.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
   /usr/include/c++/13/istream \
   /usr/include/c++/13/ios \
@@ -243,11 +234,17 @@ CMakeFiles/pugixml-static.dir/src/pugixml.cpp.o: /home/hsimho/MightyL/build/moni
 
 /usr/include/asm-generic/int-ll64.h:
 
+/usr/include/x86_64-linux-gnu/asm/types.h:
+
+/usr/include/linux/types.h:
+
 /usr/include/linux/stat.h:
 
 /usr/include/x86_64-linux-gnu/bits/statx.h:
 
 /usr/include/c++/13/bits/ostream.tcc:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/ctype_inline.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_base.h:
 
@@ -256,8 +253,6 @@ CMakeFiles/pugixml-static.dir/src/pugixml.cpp.o: /home/hsimho/MightyL/build/moni
 /usr/include/c++/13/bits/locale_facets.h:
 
 /usr/include/c++/13/ios:
-
-/usr/include/x86_64-linux-gnu/bits/mathinline.h:
 
 /usr/include/x86_64-linux-gnu/bits/iscanonical.h:
 
@@ -283,9 +278,7 @@ CMakeFiles/pugixml-static.dir/src/pugixml.cpp.o: /home/hsimho/MightyL/build/moni
 
 /usr/include/assert.h:
 
-/usr/include/x86_64-linux-gnu/c++/13/bits/ctype_inline.h:
-
-/usr/include/x86_64-linux-gnu/bits/string_fortified.h:
+/usr/include/string.h:
 
 /usr/include/x86_64-linux-gnu/bits/uio_lim.h:
 
@@ -317,23 +310,9 @@ CMakeFiles/pugixml-static.dir/src/pugixml.cpp.o: /home/hsimho/MightyL/build/moni
 
 /usr/include/errno.h:
 
-/usr/include/x86_64-linux-gnu/bits/stdio2.h:
-
-/usr/include/string.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdio.h:
-
 /usr/include/stdio.h:
 
-/usr/include/x86_64-linux-gnu/asm/types.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
-
 /usr/include/alloca.h:
-
-/usr/include/linux/types.h:
-
-/usr/include/x86_64-linux-gnu/bits/select2.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
 
@@ -349,8 +328,6 @@ CMakeFiles/pugixml-static.dir/src/pugixml.cpp.o: /home/hsimho/MightyL/build/moni
 
 /usr/include/endian.h:
 
-/usr/include/x86_64-linux-gnu/sys/types.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/struct_statx_timestamp.h:
 
 /usr/include/linux/posix_types.h:
@@ -359,8 +336,6 @@ CMakeFiles/pugixml-static.dir/src/pugixml.cpp.o: /home/hsimho/MightyL/build/moni
 
 /usr/include/c++/13/bits/localefwd.h:
 
-/usr/include/x86_64-linux-gnu/bits/strings_fortified.h:
-
 /usr/include/c++/13/cerrno:
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
@@ -368,8 +343,6 @@ CMakeFiles/pugixml-static.dir/src/pugixml.cpp.o: /home/hsimho/MightyL/build/moni
 /usr/include/math.h:
 
 /usr/include/c++/13/bits/exception_defines.h:
-
-/usr/include/x86_64-linux-gnu/bits/wchar2.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
@@ -467,8 +440,6 @@ CMakeFiles/pugixml-static.dir/src/pugixml.cpp.o: /home/hsimho/MightyL/build/moni
 
 /usr/include/x86_64-linux-gnu/asm/errno.h:
 
-/usr/include/x86_64-linux-gnu/bits/stdlib.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
 
 /usr/include/c++/13/bits/istream.tcc:
@@ -503,6 +474,10 @@ CMakeFiles/pugixml-static.dir/src/pugixml.cpp.o: /home/hsimho/MightyL/build/moni
 
 /usr/include/c++/13/bits/exception.h:
 
+/usr/include/c++/13/typeinfo:
+
+/usr/include/c++/13/bits/cxxabi_init_exception.h:
+
 /usr/include/c++/13/bits/charconv.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
@@ -511,21 +486,17 @@ CMakeFiles/pugixml-static.dir/src/pugixml.cpp.o: /home/hsimho/MightyL/build/moni
 
 /usr/include/c++/13/bits/stl_pair.h:
 
+/usr/include/c++/13/bits/ptr_traits.h:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:
+
 /usr/include/c++/13/bits/allocator.h:
 
 /usr/include/x86_64-linux-gnu/bits/math-vector.h:
 
 /usr/include/c++/13/bits/hash_bytes.h:
-
-/usr/include/c++/13/bits/cxxabi_init_exception.h:
-
-/usr/include/c++/13/typeinfo:
-
-/usr/include/c++/13/bits/ptr_traits.h:
-
-/usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:
-
-/usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h:
 
 /usr/include/c++/13/type_traits:
 
@@ -554,6 +525,8 @@ CMakeFiles/pugixml-static.dir/src/pugixml.cpp.o: /home/hsimho/MightyL/build/moni
 /usr/include/c++/13/clocale:
 
 /usr/include/x86_64-linux-gnu/bits/locale.h:
+
+/usr/include/x86_64-linux-gnu/sys/types.h:
 
 /usr/include/ctype.h:
 

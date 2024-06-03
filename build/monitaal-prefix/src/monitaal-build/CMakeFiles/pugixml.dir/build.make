@@ -89,7 +89,7 @@ pugixml-prefix/src/pugixml-stamp/pugixml-build: pugixml-prefix/src/pugixml-stamp
 pugixml-prefix/src/pugixml-stamp/pugixml-configure: pugixml-prefix/tmp/pugixml-cfgcmd.txt
 pugixml-prefix/src/pugixml-stamp/pugixml-configure: pugixml-prefix/src/pugixml-stamp/pugixml-patch
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Performing configure step for 'pugixml'"
-	cd /home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-build && /usr/bin/cmake "(" -DCMAKE_TOOLCHAIN_FILE= -DCMAKE_C_COMPILER=/usr/bin/cc -DCMAKE_CXX_COMPILER=/usr/bin/c++ -DCMAKE_INSTALL_PREFIX=/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/external -DCMAKE_BUILD_TYPE=Release ")" "-GUnix Makefiles" /home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml
+	cd /home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-build && /usr/bin/cmake "(" -DCMAKE_TOOLCHAIN_FILE= -DCMAKE_C_COMPILER=/usr/bin/cc -DCMAKE_CXX_COMPILER=/usr/bin/c++ -DCMAKE_INSTALL_PREFIX=/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/external -DCMAKE_BUILD_TYPE= ")" "-GUnix Makefiles" /home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml
 	cd /home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-build && /usr/bin/cmake -E touch /home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-stamp/pugixml-configure
 
 pugixml-prefix/src/pugixml-stamp/pugixml-download: pugixml-prefix/src/pugixml-stamp/pugixml-gitinfo.txt

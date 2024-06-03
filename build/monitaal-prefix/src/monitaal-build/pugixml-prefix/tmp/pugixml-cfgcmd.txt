@@ -1,1 +1,1 @@
-cmd='/usr/bin/cmake;(;-DCMAKE_TOOLCHAIN_FILE=;-DCMAKE_C_COMPILER=/usr/bin/cc;-DCMAKE_CXX_COMPILER=/usr/bin/c++;-DCMAKE_INSTALL_PREFIX=/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/external;-DCMAKE_BUILD_TYPE=Release;);-GUnix Makefiles;<SOURCE_DIR><SOURCE_SUBDIR>'
+cmd='/usr/bin/cmake;(;-DCMAKE_TOOLCHAIN_FILE=;-DCMAKE_C_COMPILER=/usr/bin/cc;-DCMAKE_CXX_COMPILER=/usr/bin/c++;-DCMAKE_INSTALL_PREFIX=/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/external;-DCMAKE_BUILD_TYPE=;);-GUnix Makefiles;<SOURCE_DIR><SOURCE_SUBDIR>'

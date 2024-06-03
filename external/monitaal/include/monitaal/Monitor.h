@@ -70,10 +70,8 @@ namespace monitaal {
 
             single_monitor_answer_e _status;
 
-            bool inclusion;
-
         public:
-            explicit Single_monitor(const TA &automaton, bool inclusion);
+            explicit Single_monitor(const TA &automaton);
 
             single_monitor_answer_e status();
 
@@ -90,7 +88,6 @@ namespace monitaal {
         monitor_answer_e _status;
 
     public:
-        Monitor(const TA& pos, const TA& neg, bool inclusion);
         Monitor(const TA& pos, const TA& neg);
 
         monitor_answer_e input(const std::vector<timed_input_t<is_interval>>& input);

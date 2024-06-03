@@ -65,11 +65,11 @@ set_target_properties(pugixml::static PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml/src"
 )
 
-# Import target "pugixml::static" for configuration "Release"
-set_property(TARGET pugixml::static APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "pugixml::static" for configuration ""
+set_property(TARGET pugixml::static APPEND PROPERTY IMPORTED_CONFIGURATIONS NOCONFIG)
 set_target_properties(pugixml::static PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-build/libpugixml.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_NOCONFIG "CXX"
+  IMPORTED_LOCATION_NOCONFIG "/home/hsimho/MightyL/build/monitaal-prefix/src/monitaal-build/pugixml-prefix/src/pugixml-build/libpugixml.a"
   )
 
 # This file does not depend on other imported targets which have
