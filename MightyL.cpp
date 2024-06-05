@@ -63,13 +63,13 @@ namespace mightylcpp {
 
         std::string output;
 
-//        std::cout << std::setw(12);     // only affects the first char below, actually
+        std::cout << std::setw(12);     // only affects the first char below, actually
         for (int v = 0; v < size; ++v) {
             output += (varset[v] < 0 ? 'X' : (char)('0' + varset[v]));
-//            std::cout << (varset[v] < 0 ? 'X' : (char)('0' + varset[v]));
+            std::cout << (varset[v] < 0 ? 'X' : (char)('0' + varset[v]));
         }
-//        std::cout << std::endl;
-//        std::cout << std::setw(0);
+        std::cout << std::endl;
+        std::cout << std::setw(0);
 
         sat_paths.push_back(output);
 
@@ -3616,7 +3616,7 @@ namespace mightylcpp {
             std::cout << std::endl;
 
             std::cout << std::setw(20) << "# of locations: " << std::setw(10) << temporal_components.back().locations().size() << std::setw(0) << std::endl;
-            std::cout << std::setw(20) << "# of clocks: " << std::setw(10) << temporal_components.back().locations().size() << std::setw(0) << std::endl;
+            std::cout << std::setw(20) << "# of clocks: " << std::setw(10) << temporal_components.back().number_of_clocks() << std::setw(0) << std::endl;
 
             std::cout << std::endl;
 
@@ -3694,7 +3694,7 @@ namespace mightylcpp {
         std::cout << std::endl;
 
         std::cout << std::setw(20) << "# of locations: " << std::setw(10) << varphi.locations().size() << std::setw(0) << std::endl;
-        std::cout << std::setw(20) << "# of clocks: " << std::setw(10) << varphi.locations().size() << std::setw(0) << std::endl;
+        std::cout << std::setw(20) << "# of clocks: " << std::setw(10) << varphi.number_of_clocks() << std::setw(0) << std::endl;
 
         std::cout << std::endl;
 
@@ -3720,7 +3720,7 @@ namespace mightylcpp {
         std::cout << std::endl;
 
         std::cout << std::setw(20) << "# of locations: " << std::setw(10) << product.locations().size() << std::setw(0) << std::endl;
-        std::cout << std::setw(20) << "# of clocks: " << std::setw(10) << product.locations().size() << std::setw(0) << std::endl;
+        std::cout << std::setw(20) << "# of clocks: " << std::setw(10) << product.number_of_clocks() << std::setw(0) << std::endl;
 
         std::cout << std::endl;
 
