@@ -8,10 +8,10 @@
 #include <iomanip>
 #include <chrono>
 
-#include "Fixpoint.h"
-#include "state.h"
 #include "types.h"
-#include "TA.h"
+#include "StatewithBDDEdges.h"
+#include "TAwithBDDEdges.h"
+#include "FixpointwithBDDEdges.h"
 
 #include "MightyL.h"
 
@@ -70,7 +70,7 @@ int main(int argc, const char ** argv) {
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
    
-    std::cout << "Constructing TA took = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
+    std::cout << "Constructing TA (with BDD transitions) took = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
 
     std::chrono::steady_clock::time_point begin2 = std::chrono::steady_clock::now();
     std::cout << "<<<<<< Calculating fixpoints >>>>>>" << std::endl;
