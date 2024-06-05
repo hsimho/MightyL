@@ -3618,6 +3618,10 @@ namespace mightylcpp {
             std::cout << std::setw(20) << "# of locations: " << std::setw(10) << temporal_components.back().locations().size() << std::setw(0) << std::endl;
             std::cout << std::setw(20) << "# of clocks: " << std::setw(10) << temporal_components.back().number_of_clocks() << std::setw(0) << std::endl;
 
+            // for (auto i = 0; i < temporal_components.back().number_of_clocks(); ++i) {
+            //     std::cout << std::setw(20) << temporal_components.back().clock_name(i) << std::setw(0) << std::endl;
+            // }
+
             std::cout << std::endl;
 
             for (const auto & [k, v] : temporal_components.back().locations()) {

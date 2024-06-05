@@ -37,7 +37,10 @@ namespace monitaal {
 
     void TAwithBDDEdges::intersection(const TAwithBDDEdges &other) {
 
-        auto clock_size = this->number_of_clocks() - 1;
+        // TODO: This is a temporary adjustment in response to the off-by-one error
+        // introduced by https://github.com/DEIS-Tools/MoniTAal/commit/2207cb9
+        
+        auto clock_size = this->number_of_clocks() - 2;
 
         std::map<std::pair<location_id_t, location_id_t>, std::pair<location_id_t, location_id_t>> new_loc_indir;
         location_id_t tmp_id = 0;
@@ -127,7 +130,11 @@ namespace monitaal {
         new_clocks.insert({0, "x0"});
 
         for (int i = 0; i < components.size(); ++i) {
-            for (int j = 0; j < components[i].number_of_clocks(); ++j) {
+
+            // TODO: This is a temporary adjustment in response to the off-by-one error
+            // introduced by https://github.com/DEIS-Tools/MoniTAal/commit/2207cb9
+
+            for (int j = 0; j < components[i].number_of_clocks() - 1; ++j) {
                 if (j == 0) {
                     clock_offsets[i] = index;
                 } else {
@@ -506,7 +513,11 @@ namespace monitaal {
         }
 
         clock_map_t clocks;
-        for (clock_index_t i = 0; i < this->number_of_clocks(); ++i) {
+
+        // TODO: This is a temporary adjustment in response to the off-by-one error
+        // introduced by https://github.com/DEIS-Tools/MoniTAal/commit/2207cb9
+
+        for (clock_index_t i = 0; i < this->number_of_clocks() - 1; ++i) {
             clocks.insert({i, this->clock_name(i)});
         }
 
