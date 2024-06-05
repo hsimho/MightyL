@@ -1,1 +1,0 @@
-/usr/bin/c++ -rdynamic CMakeFiles/solitare.dir/solitare.cxx.o -o solitare  ../../src/libbuddy.a 

@@ -1,8 +1,0 @@
-/home/hsimho/MightyL/external/monitaal/lib/libMoniTAal.a
-/home/hsimho/MightyL/external/monitaal/include/monitaal/TA.h
-/home/hsimho/MightyL/external/monitaal/include/monitaal/state.h
-/home/hsimho/MightyL/external/monitaal/include/monitaal/Fixpoint.h
-/home/hsimho/MightyL/external/monitaal/include/monitaal/Parser.h
-/home/hsimho/MightyL/external/monitaal/include/monitaal/types.h
-/home/hsimho/MightyL/external/monitaal/include/monitaal/Monitor.h
-/home/hsimho/MightyL/external/monitaal/include/monitaal/EventParser.h

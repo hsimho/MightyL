@@ -1,2 +1,0 @@
-/usr/bin/ar qc libbuddy.a CMakeFiles/buddy.dir/bddio.c.o CMakeFiles/buddy.dir/bddop.c.o CMakeFiles/buddy.dir/bvec.c.o CMakeFiles/buddy.dir/cache.c.o CMakeFiles/buddy.dir/cppext.cxx.o CMakeFiles/buddy.dir/fdd.c.o CMakeFiles/buddy.dir/imatrix.c.o CMakeFiles/buddy.dir/kernel.c.o CMakeFiles/buddy.dir/pairs.c.o CMakeFiles/buddy.dir/prime.c.o CMakeFiles/buddy.dir/reorder.c.o CMakeFiles/buddy.dir/tree.c.o
-/usr/bin/ranlib libbuddy.a
