@@ -146,7 +146,7 @@ namespace monitaal {
         // std::cout << "Total: " << new_clocks.size() << " clocks." << std::endl;
         
 
-        std::vector<location_id_t> location_indices(components.size(), 0);
+        std::vector<size_t> location_indices(components.size(), 0);
         std::vector<location_id_t> location_ids(components.size(), 0);
 
         std::map<std::vector<location_id_t>, std::vector<location_id_t>> new_loc_indir;
@@ -293,7 +293,7 @@ namespace monitaal {
             // }
             // std::cout << std::endl;
 
-            std::vector<int> bdd_edge_indices(components.size(), 0);
+            std::vector<size_t> bdd_edge_indices(components.size(), 0);
 
             bool stucked = false;
             for (int i = 0; i < components.size(); ++i) {

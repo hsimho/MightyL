@@ -8,10 +8,10 @@
 #include <iomanip>
 #include <chrono>
 
-#include "Fixpoint.h"
-#include "state.h"
 #include "types.h"
-#include "TA.h"
+#include "StatewithBDDEdges.h"
+#include "TAwithBDDEdges.h"
+#include "FixpointwithBDDEdges.h"
 
 #include "MightyL.h"
 
@@ -66,20 +66,23 @@ int main(int argc, const char ** argv) {
     MitlParser::MainContext* original_formula = parser.main();
 
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-    monitaal::TA pos = build_ta_from_main(original_formula);
+    monitaal::TAwithBDDEdges pos = build_ta_from_main(original_formula);
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
    
-    std::cout << "Constructing TA took = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
+    std::cout << "Constructing TA (with BDD transitions) took = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
 
     std::chrono::steady_clock::time_point begin2 = std::chrono::steady_clock::now();
     std::cout << "<<<<<< Calculating fixpoints >>>>>>" << std::endl;
-    auto recurrent = monitaal::Fixpoint::buchi_accept_fixpoint(pos);
+    auto recurrent = monitaal::FixpointwithBDDEdges::buchi_accept_fixpoint(pos);
 
-    auto initial_state = monitaal::symbolic_state_t(pos.initial_location(), monitaal::Federation::zero(pos.number_of_clocks()));
+    // TODO: This is a temporary adjustment in response to the off-by-one error
+    // introduced by https://github.com/DEIS-Tools/MoniTAal/commit/2207cb9
+
+    auto initial_state = monitaal::bdd_symbolic_state_t(pos.initial_location(), monitaal::Federation::zero(pos.number_of_clocks() - 1));
 
 
-    if (initial_state.is_included_in(monitaal::Fixpoint::reach(recurrent, pos))) {
+    if (initial_state.is_included_in(monitaal::FixpointwithBDDEdges::reach(recurrent, pos))) {
 
         std::cout << "SATISFIABLE" << std::endl;
 

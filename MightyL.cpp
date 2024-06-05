@@ -3386,7 +3386,7 @@ namespace mightylcpp {
 
     }
 
-    monitaal::TA build_ta_from_main(MitlParser::MainContext* phi_) {
+    monitaal::TAwithBDDEdges build_ta_from_main(MitlParser::MainContext* phi_) {
 
         std::string nnf_in = phi_->getText();
 
@@ -3741,12 +3741,14 @@ namespace mightylcpp {
 
         }
 
-        std::set<int> props_to_keep;
-        for (const auto & [k, v] : nnf_formula->props) {
-            props_to_keep.insert(nnf_formula->props[k]); 
-        }
+        return product;
 
-        return product.projection(props_to_keep);
+        // std::set<int> props_to_keep;
+        // for (const auto & [k, v] : nnf_formula->props) {
+        //     props_to_keep.insert(nnf_formula->props[k]); 
+        // }
+
+        // return product.projection(props_to_keep);
 
     }
 

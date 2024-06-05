@@ -79,7 +79,9 @@ add_executable(demo main.cpp
                MitlAtomNumberingVisitor.cpp
                MitlCollectTemporalVisitor.cpp
                MitlGetBDDVisitor.cpp
+               StatewithBDDEdges.cpp
                TAwithBDDEdges.cpp
+               FixpointwithBDDEdges.cpp
                MightyL.cpp
                ${ANTLR_MitlGrammar_CXX_OUTPUTS})
 
