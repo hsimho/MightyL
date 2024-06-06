@@ -37,6 +37,6 @@ namespace mightylcpp {
 
     extern monitaal::TAwithBDDEdges build_ta_from_atom(const mightylcpp::MitlParser::AtomContext*);
 
-    extern monitaal::TAwithBDDEdges build_ta_from_main(mightylcpp::MitlParser::MainContext*);
+    extern monitaal::TA build_ta_from_main(mightylcpp::MitlParser::MainContext*);
 
 }

@@ -270,6 +270,10 @@ namespace monitaal {
 
         
         // std::cout << "Synchronising transitions..." << std::endl;
+        
+        // TODO: Maybe untimed reachability analysis first
+
+        // std::set<location_id_t> reachable_locations;
 
         bdd_edges_t new_bdd_edges;
 
@@ -319,11 +323,17 @@ namespace monitaal {
                     // std::cout << std::endl;
 
                     bdd new_bdd_label = bdd_true();
-                    for (int i = 0; i < components.size(); ++i) {
+                    bool contradiction = false;
+                    int last_index; 
+                    for (int i = 0; i < components.size() && !contradiction; ++i) {
                         new_bdd_label = new_bdd_label & components[i].bdd_edges_from(location_ids[i]).at(bdd_edge_indices[i]).bdd_label();
+                        if (new_bdd_label == bdd_false()) {
+                            contradiction = true;
+                            last_index = i;
+                        }
                     }
 
-                    if (bdd_satcount(new_bdd_label) > 0) {
+                    if (!contradiction) {
 
                         constraints_t guard;
                         for (int i = 0; i < components.size(); ++i) {
@@ -364,6 +374,7 @@ namespace monitaal {
                                 if (id_src == components.size() - 1) {
 
                                     new_bdd_edges.push_back(bdd_edge_t(new_loc_indir.at(location_ids).at(id_src), new_loc_indir.at(dest_location_ids).at(0), guard, reset, new_bdd_label));
+                                    // reachable_locations.insert(new_loc_indir.at(dest_location_ids).at(0));
 
                                     // std::cout << "Adding edge from" << std::endl;
                                     // for (int i = 0; i < components.size(); ++i) {
@@ -382,6 +393,7 @@ namespace monitaal {
                                 } else {
 
                                     new_bdd_edges.push_back(bdd_edge_t(new_loc_indir.at(location_ids).at(id_src), new_loc_indir.at(dest_location_ids).at(id_src + 1), guard, reset, new_bdd_label));
+                                    // reachable_locations.insert(new_loc_indir.at(dest_location_ids).at(id_src + 1));
 
                                     // std::cout << "Adding edge from" << std::endl;
                                     // for (int i = 0; i < components.size(); ++i) {
@@ -402,6 +414,7 @@ namespace monitaal {
                             } else {
 
                                 new_bdd_edges.push_back(bdd_edge_t(new_loc_indir.at(location_ids).at(id_src), new_loc_indir.at(dest_location_ids).at(id_src), guard, reset, new_bdd_label));
+                                // reachable_locations.insert(new_loc_indir.at(dest_location_ids).at(id_src));
 
                                 // std::cout << "Adding edge from" << std::endl;
                                 // for (int i = 0; i < components.size(); ++i) {
@@ -426,20 +439,42 @@ namespace monitaal {
 
                     }
 
+                    if (!contradiction) {
 
-                    incremented = false;
-                    for (int i = components.size() - 1; !incremented && i >= 0; --i) {
+                        incremented = false;
+                        for (int i = components.size() - 1; !incremented && i >= 0; --i) {
 
-                        if (bdd_edge_indices[i] < components[i].bdd_edges_from(location_ids[i]).size() - 1) {
+                            if (bdd_edge_indices[i] < components[i].bdd_edges_from(location_ids[i]).size() - 1) {
 
-                            ++bdd_edge_indices[i];
-                            incremented = true;
+                                ++bdd_edge_indices[i];
+                                incremented = true;
 
-                        } else {
+                            } else {
 
-                            bdd_edge_indices[i] = 0;
+                                bdd_edge_indices[i] = 0;
+
+                            }
 
                         }
+
+                    } else {
+
+                        incremented = false;
+                        for (int i = last_index; !incremented && i >= 0; --i) {
+
+                            if (bdd_edge_indices[i] < components[i].bdd_edges_from(location_ids[i]).size() - 1) {
+
+                                ++bdd_edge_indices[i];
+                                incremented = true;
+
+                            } else {
+
+                                bdd_edge_indices[i] = 0;
+
+                            }
+
+                        }
+
 
                     }
 
@@ -476,37 +511,92 @@ namespace monitaal {
         std::cout << "new_locations.size() == " << new_locations.size() << std::endl;
         std::cout << "new_bdd_edges.size() == " << new_bdd_edges.size() << std::endl;
 
-        return TAwithBDDEdges("product", new_clocks, new_locations, new_bdd_edges, new_loc_indir.at(location_ids).at(0));
+        // std::cout << "reachable_locations.size() == " << reachable_locations.size() << std::endl;
+        std::cout << "Removing the unreachable locations and edges..." << std::endl;
+
+
+        std::set<location_id_t> new_location_ids_reachable;
+        locations_t new_locations_reachable;
+        bdd_edges_t new_bdd_edges_reachable;
+        
+        for (const auto &l : new_locations) {
+            if (l.id() == new_loc_indir.at(location_ids).at(0)) {
+                new_location_ids_reachable.insert(l.id());
+            }
+        }
+
+        for (const auto &e : new_bdd_edges) {
+
+            new_location_ids_reachable.insert(e.to());
+
+        }
+
+        for (const auto &e : new_bdd_edges) {
+
+            if (new_location_ids_reachable.count(e.from()) + new_location_ids_reachable.count(e.to()) >= 2) {
+                new_bdd_edges_reachable.push_back(e);
+            }
+
+        }
+
+        for (const auto &l : new_locations) {
+            if (new_location_ids_reachable.count(l.id()) >= 1) {
+                new_locations_reachable.push_back(l);
+            }
+        }
+
+        std::cout << "new_locations_reachable.size() == " << new_locations_reachable.size() << std::endl;
+        std::cout << "new_bdd_edges_reachable.size() == " << new_bdd_edges_reachable.size() << std::endl;
+
+        return TAwithBDDEdges("product", new_clocks, new_locations_reachable, new_bdd_edges_reachable, new_loc_indir.at(location_ids).at(0));
 
 
     }
 
-    TA TAwithBDDEdges::projection(const std::set<int>& props_to_keep) {
+    TA TAwithBDDEdges::projection(const std::set<int>& props_to_remove) {
 
         edges_t edges;
-
+        bdd projected_e;
+        bdd new_props = bdd_true();
+        for (const auto& i : props_to_remove) {
+            new_props = new_props & bdd_ithvar(i);
+        }
+            
         for (const auto& [id, l] : this->locations()) {
 
             for (const auto& e : this->bdd_edges_from(id)) {
 
+                std::cout << "Before projection: " << e.bdd_label() << std::endl;
+
                 bdd_allsat(e.bdd_label(), *mightylcpp::allsat_print_handler);
-                std::set<std::string> labels_set;
-
-                for (const auto& p : mightylcpp::sat_paths) {
-                    for (const auto& s : mightylcpp::get_letters(p)) {
-                        std::string projected_s;
-                        for (const auto& i : props_to_keep) {
-                            projected_s += s[i];
-                        }
-                        labels_set.insert(projected_s);
-                    }
-                }
-
                 mightylcpp::sat_paths.clear();
 
-                for (const auto& label : labels_set) {
-                    edges.push_back(monitaal::edge_t(e.from(), e.to(), e.guard(), e.reset(), label));     // from, to, guard, reset, label
-                }
+                projected_e = bdd_exist(e.bdd_label(), new_props);
+
+                std::cout << "After projection: " << projected_e << std::endl;
+
+                bdd_allsat(projected_e, *mightylcpp::allsat_print_handler);
+                mightylcpp::sat_paths.clear();
+
+                edges.push_back(monitaal::edge_t(e.from(), e.to(), e.guard(), e.reset(), "some_bdd"));     // from, to, guard, reset, label
+
+                // std::set<std::string> labels_set;
+
+                // for (const auto& p : mightylcpp::sat_paths) {
+                //     for (const auto& s : mightylcpp::get_letters(p)) {
+                //         std::string projected_s;
+                //         for (const auto& i : props_to_keep) {
+                //             projected_s += s[i];
+                //         }
+                //         labels_set.insert(projected_s);
+                //     }
+                // }
+
+                // mightylcpp::sat_paths.clear();
+
+                // for (const auto& label : labels_set) {
+                //     edges.push_back(monitaal::edge_t(e.from(), e.to(), e.guard(), e.reset(), label));     // from, to, guard, reset, label
+                // }
 
             }
 
@@ -525,6 +615,11 @@ namespace monitaal {
         for (const auto& [id, l] : this->locations()) {
             locations.push_back(l);
         }
+
+        std::cout << "Projected TA: " << std::endl;
+        std::cout << "clocks.size() == " << clocks.size() << std::endl;
+        std::cout << "locations.size() == " << locations.size() << std::endl;
+        std::cout << "bdd_edges.size() == " << edges.size() << std::endl;
 
         return TA("projected", clocks, locations, edges, this->initial_location());
 

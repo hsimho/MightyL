@@ -66,7 +66,7 @@ int main(int argc, const char ** argv) {
     MitlParser::MainContext* original_formula = parser.main();
 
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-    monitaal::TAwithBDDEdges pos = build_ta_from_main(original_formula);
+    monitaal::TA pos = build_ta_from_main(original_formula);
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
    
@@ -74,15 +74,12 @@ int main(int argc, const char ** argv) {
 
     std::chrono::steady_clock::time_point begin2 = std::chrono::steady_clock::now();
     std::cout << "<<<<<< Calculating fixpoints >>>>>>" << std::endl;
-    auto recurrent = monitaal::FixpointwithBDDEdges::buchi_accept_fixpoint(pos);
+    auto recurrent = monitaal::Fixpoint::buchi_accept_fixpoint(pos);
 
-    // TODO: This is a temporary adjustment in response to the off-by-one error
-    // introduced by https://github.com/DEIS-Tools/MoniTAal/commit/2207cb9
-
-    auto initial_state = monitaal::bdd_symbolic_state_t(pos.initial_location(), monitaal::Federation::zero(pos.number_of_clocks() - 1));
+    auto initial_state = monitaal::symbolic_state_t(pos.initial_location(), monitaal::Federation::zero(pos.number_of_clocks()));
 
 
-    if (initial_state.is_included_in(monitaal::FixpointwithBDDEdges::reach(recurrent, pos))) {
+    if (initial_state.is_included_in(monitaal::Fixpoint::reach(recurrent, pos))) {
 
         std::cout << "SATISFIABLE" << std::endl;
 
