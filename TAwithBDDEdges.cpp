@@ -374,63 +374,16 @@ namespace monitaal {
                                 if (id_src == components.size() - 1) {
 
                                     new_bdd_edges.push_back(bdd_edge_t(new_loc_indir.at(location_ids).at(id_src), new_loc_indir.at(dest_location_ids).at(0), guard, reset, new_bdd_label));
-                                    // reachable_locations.insert(new_loc_indir.at(dest_location_ids).at(0));
-
-                                    // std::cout << "Adding edge from" << std::endl;
-                                    // for (int i = 0; i < components.size(); ++i) {
-                                    //     std::cout << location_ids[i] << " ";
-                                    // }
-                                    // std::cout << "(" << new_loc_indir.at(location_ids).at(id_src) << ")" << std::endl;
-
-                                    // std::cout << "\nto" << std::endl;
-                                    // for (int i = 0; i < components.size(); ++i) {
-                                    //     std::cout << dest_location_ids[i] << " ";
-                                    // }
-                                    // std::cout << "(" << new_loc_indir.at(dest_location_ids).at(0) << ")" << std::endl;
-
-                                    // std::cout << "\n(" << id_src << " -> " << 0 << ")" << std::endl;
 
                                 } else {
 
                                     new_bdd_edges.push_back(bdd_edge_t(new_loc_indir.at(location_ids).at(id_src), new_loc_indir.at(dest_location_ids).at(id_src + 1), guard, reset, new_bdd_label));
-                                    // reachable_locations.insert(new_loc_indir.at(dest_location_ids).at(id_src + 1));
-
-                                    // std::cout << "Adding edge from" << std::endl;
-                                    // for (int i = 0; i < components.size(); ++i) {
-                                    //     std::cout << location_ids[i] << " ";
-                                    // }
-                                    // std::cout << "(" << new_loc_indir.at(location_ids).at(id_src) << ")" << std::endl;
-
-                                    // std::cout << "\nto" << std::endl;
-                                    // for (int i = 0; i < components.size(); ++i) {
-                                    //     std::cout << dest_location_ids[i] << " ";
-                                    // }
-                                    // std::cout << "(" << new_loc_indir.at(dest_location_ids).at(id_src + 1) << ")" << std::endl;
-
-                                    // std::cout << "\n(" << id_src << " -> " << id_src + 1 << ")" << std::endl;
 
                                 }
 
                             } else {
 
                                 new_bdd_edges.push_back(bdd_edge_t(new_loc_indir.at(location_ids).at(id_src), new_loc_indir.at(dest_location_ids).at(id_src), guard, reset, new_bdd_label));
-                                // reachable_locations.insert(new_loc_indir.at(dest_location_ids).at(id_src));
-
-                                // std::cout << "Adding edge from" << std::endl;
-                                // for (int i = 0; i < components.size(); ++i) {
-                                //     std::cout << location_ids[i] << " ";
-                                // }
-                                // std::cout << "(" << new_loc_indir.at(location_ids).at(id_src) << ")" << std::endl;
-
-                                // std::cout << "\nto" << std::endl;
-                                // for (int i = 0; i < components.size(); ++i) {
-                                //     std::cout << dest_location_ids[i] << " ";
-                                // }
-                                // std::cout << "(" << new_loc_indir.at(dest_location_ids).at(id_src) << ")" << std::endl;
-
-                                // std::cout << "\n(" << id_src << " -> " << id_src << ")" << std::endl;
-
-
 
                             }
 
