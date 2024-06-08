@@ -71,6 +71,7 @@ int main(int argc, const char ** argv) {
 
    
     std::cout << "Constructing TA (with BDD transitions) took = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
+    // std::cout << pos << std::endl;
 
     std::chrono::steady_clock::time_point begin2 = std::chrono::steady_clock::now();
     std::cout << "<<<<<< Calculating fixpoints >>>>>>" << std::endl;
