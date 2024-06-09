@@ -9,11 +9,23 @@ Another notable difference is that it adopts the *strict-future* semantics for t
 
 ## Technical details
 
+This version uses the TA and DBM representations provided by 
+[MoniTAal](https://github.com/DEIS-Tools/MoniTAal) and [PARDIBAAL](https://github.com/DEIS-Tools/PARDIBAAL).
+It uses a *semi-symbolic* representation where
+each transition in a TA is labelled with a BDD representing a Boolean formula over propositions
+(instead of a single letter).
+The discrete state space (i.e. set of locations) of the product of the component TAs, however, is built explicitly;
+for performance considerations we do this only for (untimely) reachable locations.
+The product TA is then used as input to a standard backward fixpoint algoritihm for Buechi
+emptiness.
 
+Improvements planned:
+- Support of past modalities?
+- CLI for options (choose the backend, etc.)
+- CLI for model file?
 
 ## Build MightyL
-
-The current version makes use of [MoniTAal](https://github.com/DEIS-Tools/MoniTAal), which itself depends on [Boost](https://www.boost.org/) ```>= 1.40```.
+[Boost](https://www.boost.org/) ```>= 1.40```, which is needed by [MoniTAal](https://github.com/DEIS-Tools/MoniTAal).
 ```console
 $ git clone git@github.com:hsimho/MightyL.git
 $ cd MightyL
