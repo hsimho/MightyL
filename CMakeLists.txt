@@ -52,7 +52,7 @@ add_subdirectory (${EXTERNAL_INSTALL_LOCATION}/buddy buddy)
 #file(MAKE_DIRECTORY ${EXTERNAL_INSTALL_LOCATION}/monitaal)
 
 ExternalProject_add(monitaal
-    GIT_REPOSITORY git@github.com:hsimho/MoniTAal-symbolic-transitions.git
+    GIT_REPOSITORY git@github.com:DEIS-Tools/MoniTAal.git
     GIT_TAG main
     CMAKE_ARGS (
         -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
