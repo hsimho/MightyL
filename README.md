@@ -15,7 +15,7 @@ It uses a *semi-symbolic* representation where
 each transition in a TA is labelled with a BDD representing a Boolean formula over propositions
 (instead of a single letter).
 The discrete state space (i.e. set of locations) of the product of the component TAs, however, is built explicitly;
-for performance considerations we do this only for (untimely) reachable locations.
+for performance considerations we do this only for (untimely) reachable locations and transitions.
 The product TA is then used as input to a standard backward fixpoint algoritihm for Buechi
 emptiness.
 
