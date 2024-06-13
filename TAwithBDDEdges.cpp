@@ -289,9 +289,42 @@ namespace monitaal {
                             name += components[i].locations().at(dest_location_ids[i]).name() + "_";
                         }
 
+                        // "Jumping" over counter values
+                        // Here we already enforced that components.size >= 2
+                        //
+                        int new_i = curr_i;
+                        
                         if (components[curr_i].locations().at(location_ids[curr_i]).is_accept()) {
 
-                            if (curr_i == components.size() - 1) {
+                            bool full_circle = false;
+                            while (!full_circle && components[new_i].locations().at(location_ids[new_i]).is_accept()) { 
+
+                                if (new_i == components.size() - 1) {
+                                    new_i = 0;
+                                } else {
+                                    ++new_i; 
+                                }
+
+                                if (new_i == curr_i) {
+                                    full_circle = true;
+                                }
+                            }
+
+                            if (!full_circle) {
+
+                                if (new_i == 0) {
+                                    new_i = components.size() - 1;
+                                } else {
+                                    --new_i; 
+                                }
+
+                            }
+
+                        }
+
+                        if (components[new_i].locations().at(location_ids[new_i]).is_accept()) {
+
+                            if (new_i == components.size() - 1) {
 
                                 if (new_loc_indir.count(dest_location_ids)) {
                                     
@@ -319,22 +352,22 @@ namespace monitaal {
 
                                 if (new_loc_indir.count(dest_location_ids)) {
                                     
-                                    if (!new_loc_indir.at(dest_location_ids).count(curr_i + 1)) {
+                                    if (!new_loc_indir.at(dest_location_ids).count(new_i + 1)) {
 
-                                        new_locations_reachable.push_back(location_t(components[curr_i + 1].locations().at(dest_location_ids[curr_i + 1]).is_accept(), tmp_id, name + std::to_string(curr_i + 1), constr));
-                                        new_loc_indir.at(dest_location_ids).insert({curr_i + 1, tmp_id});
+                                        new_locations_reachable.push_back(location_t(components[new_i + 1].locations().at(dest_location_ids[new_i + 1]).is_accept(), tmp_id, name + std::to_string(new_i + 1), constr));
+                                        new_loc_indir.at(dest_location_ids).insert({new_i + 1, tmp_id});
                                         id_location_ids_map.insert({tmp_id, dest_location_ids});
-                                        id_i_map.insert({tmp_id++, curr_i + 1});
+                                        id_i_map.insert({tmp_id++, new_i + 1});
 
                                     }
 
                                 } else {
 
-                                    new_locations_reachable.push_back(location_t(components[curr_i + 1].locations().at(dest_location_ids[curr_i + 1]).is_accept(), tmp_id, name + std::to_string(curr_i + 1), constr));
+                                    new_locations_reachable.push_back(location_t(components[new_i + 1].locations().at(dest_location_ids[new_i + 1]).is_accept(), tmp_id, name + std::to_string(new_i + 1), constr));
                                     new_loc_indir.insert({dest_location_ids, {}});
-                                    new_loc_indir.at(dest_location_ids).insert({curr_i + 1, tmp_id});
+                                    new_loc_indir.at(dest_location_ids).insert({new_i + 1, tmp_id});
                                     id_location_ids_map.insert({tmp_id, dest_location_ids});
-                                    id_i_map.insert({tmp_id++, curr_i + 1});
+                                    id_i_map.insert({tmp_id++, new_i + 1});
 
                                 }
 
@@ -344,37 +377,37 @@ namespace monitaal {
 
                             if (new_loc_indir.count(dest_location_ids)) {
                                 
-                                if (!new_loc_indir.at(dest_location_ids).count(curr_i)) {
+                                if (!new_loc_indir.at(dest_location_ids).count(new_i)) {
 
-                                    new_locations_reachable.push_back(location_t(components[curr_i].locations().at(dest_location_ids[curr_i]).is_accept(), tmp_id, name + std::to_string(curr_i), constr));
-                                    new_loc_indir.at(dest_location_ids).insert({curr_i, tmp_id});
+                                    new_locations_reachable.push_back(location_t(components[new_i].locations().at(dest_location_ids[new_i]).is_accept(), tmp_id, name + std::to_string(new_i), constr));
+                                    new_loc_indir.at(dest_location_ids).insert({new_i, tmp_id});
                                     id_location_ids_map.insert({tmp_id, dest_location_ids});
-                                    id_i_map.insert({tmp_id++, curr_i});
+                                    id_i_map.insert({tmp_id++, new_i});
 
                                 }
 
                             } else {
 
-                                new_locations_reachable.push_back(location_t(components[curr_i].locations().at(dest_location_ids[curr_i]).is_accept(), tmp_id, name + std::to_string(curr_i), constr));
+                                new_locations_reachable.push_back(location_t(components[new_i].locations().at(dest_location_ids[new_i]).is_accept(), tmp_id, name + std::to_string(new_i), constr));
                                 new_loc_indir.insert({dest_location_ids, {}});
-                                new_loc_indir.at(dest_location_ids).insert({curr_i, tmp_id});
+                                new_loc_indir.at(dest_location_ids).insert({new_i, tmp_id});
                                 id_location_ids_map.insert({tmp_id, dest_location_ids});
-                                id_i_map.insert({tmp_id++, curr_i});
+                                id_i_map.insert({tmp_id++, new_i});
 
                             }
 
                         }
 
 
-                        if (components[curr_i].locations().at(location_ids[curr_i]).is_accept()) {
+                        if (components[new_i].locations().at(location_ids[new_i]).is_accept()) {
 
-                            if (curr_i == components.size() - 1) {
+                            if (new_i == components.size() - 1) {
 
                                 new_bdd_edges_reachable.push_back(bdd_edge_t(new_loc_indir.at(location_ids).at(curr_i), new_loc_indir.at(dest_location_ids).at(0), guard, reset, new_bdd_label));
 
                             } else {
 
-                                new_bdd_edges_reachable.push_back(bdd_edge_t(new_loc_indir.at(location_ids).at(curr_i), new_loc_indir.at(dest_location_ids).at(curr_i + 1), guard, reset, new_bdd_label));
+                                new_bdd_edges_reachable.push_back(bdd_edge_t(new_loc_indir.at(location_ids).at(curr_i), new_loc_indir.at(dest_location_ids).at(new_i + 1), guard, reset, new_bdd_label));
 
                             }
 
@@ -384,23 +417,24 @@ namespace monitaal {
 
                         }
 
+
                         size_t dest_id;
 
-                        if (components[curr_i].locations().at(location_ids[curr_i]).is_accept()) {
+                        if (components[new_i].locations().at(location_ids[new_i]).is_accept()) {
 
-                            if (curr_i == components.size() - 1) { 
+                            if (new_i == components.size() - 1) { 
 
                                 dest_id = new_loc_indir.at(dest_location_ids).at(0);
 
                             } else {
 
-                                dest_id = new_loc_indir.at(dest_location_ids).at(curr_i + 1);
+                                dest_id = new_loc_indir.at(dest_location_ids).at(new_i + 1);
 
                             }
 
                         } else {
 
-                            dest_id = new_loc_indir.at(dest_location_ids).at(curr_i);
+                            dest_id = new_loc_indir.at(dest_location_ids).at(new_i);
 
                         }
 
@@ -483,14 +517,14 @@ namespace monitaal {
 
             for (const auto& e : this->bdd_edges_from(id)) {
 
-                std::cout << "Before projection: " << e.bdd_label() << std::endl;
+                // std::cout << "Before projection: " << e.bdd_label() << std::endl;
 
                 bdd_allsat(e.bdd_label(), *mightylcpp::allsat_print_handler);
                 mightylcpp::sat_paths.clear();
 
                 projected_e = bdd_exist(e.bdd_label(), new_props);
 
-                std::cout << "After projection: " << projected_e << std::endl;
+                // std::cout << "After projection: " << projected_e << std::endl;
 
                 bdd_allsat(projected_e, *mightylcpp::allsat_print_handler);
 
@@ -544,7 +578,7 @@ namespace monitaal {
             locations.push_back(l);
         }
 
-        std::cout << "Projected TA: " << std::endl;
+        std::cout << "\nProjected TA: " << std::endl;
         std::cout << "clocks.size() == " << clocks.size() << std::endl;
         std::cout << "locations.size() == " << locations.size() << std::endl;
         std::cout << "bdd_edges.size() == " << edges.size() << std::endl;

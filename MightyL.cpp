@@ -63,13 +63,13 @@ namespace mightylcpp {
 
         std::string output;
 
-        std::cout << std::setw(12);     // only affects the first char below, actually
+        // std::cout << std::setw(12);     // only affects the first char below, actually
         for (int v = 0; v < size; ++v) {
             output += (varset[v] < 0 ? 'X' : (char)('0' + varset[v]));
-            std::cout << (varset[v] < 0 ? 'X' : (char)('0' + varset[v]));
+          //  std::cout << (varset[v] < 0 ? 'X' : (char)('0' + varset[v]));
         }
-        std::cout << std::endl;
-        std::cout << std::setw(0);
+        // std::cout << std::endl;
+        // std::cout << std::setw(0);
 
         sat_paths.push_back(output);
 
