@@ -70,7 +70,7 @@ int main(int argc, const char ** argv) {
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
    
-    std::cout << "Constructing TA (with BDD transitions) took = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
+    std::cout << "Constructing TA (with BDD transitions) took = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << " [ms]" << std::endl;
     // std::cout << pos << std::endl;
 
     std::chrono::steady_clock::time_point begin2 = std::chrono::steady_clock::now();
@@ -82,16 +82,16 @@ int main(int argc, const char ** argv) {
 
     if (initial_state.is_included_in(monitaal::Fixpoint::reach(recurrent, pos))) {
 
-        std::cout << "SATISFIABLE" << std::endl;
+        std::cout << "\n\n\033[32mSATISFIABLE\033[0m\n\n" << std::endl;
 
     } else {
 
-        std::cout << "NOT SATISFIABLE" << std::endl;
+        std::cout << "\n\n\033[31mNOT SATISFIABLE\033[0m\n\n" << std::endl;
 
     }
 
     std::chrono::steady_clock::time_point end2 = std::chrono::steady_clock::now();
-    std::cout << "Fixpoint took = " << std::chrono::duration_cast<std::chrono::milliseconds>(end2 - begin2).count() << "[ms]" << std::endl;
+    std::cout << "Fixpoint took = " << std::chrono::duration_cast<std::chrono::milliseconds>(end2 - begin2).count() << " [ms]" << std::endl;
 
 
     bdd_done();
