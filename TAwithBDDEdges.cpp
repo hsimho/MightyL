@@ -186,7 +186,7 @@ namespace monitaal {
 
         std::string name;
         for (size_t i = 0; i < components.size(); ++i) {
-            name += components[i].locations().at(location_ids[i]).name() + "_";
+            name += components[i].locations().at(location_ids[i]).name() + (components[i].locations().at(location_ids[i]).is_accept() ? "*" : "") + "_";
         }
 
         new_locations_reachable.push_back(location_t(components[0].locations().at(location_ids[0]).is_accept(), tmp_id, name + std::to_string(0), constr));
@@ -286,7 +286,7 @@ namespace monitaal {
 
                         std::string name;
                         for (size_t i = 0; i < components.size(); ++i) {
-                            name += components[i].locations().at(dest_location_ids[i]).name() + "_";
+                            name += components[i].locations().at(dest_location_ids[i]).name() + (components[i].locations().at(dest_location_ids[i]).is_accept() ? "*" : "") + "_";
                         }
 
                         // "Jumping" over counter values
@@ -310,133 +310,56 @@ namespace monitaal {
                                 }
                             }
 
-                            if (!full_circle) {
+                            if (full_circle) {
 
-                                if (new_i == 0) {
-                                    new_i = components.size() - 1;
+                                if (new_i == components.size() - 1) {
+                                    new_i = 0;
                                 } else {
-                                    --new_i; 
+                                    ++new_i; 
                                 }
 
                             }
 
                         }
 
-                        if (components[new_i].locations().at(location_ids[new_i]).is_accept()) {
 
-                            if (new_i == components.size() - 1) {
-
-                                if (new_loc_indir.count(dest_location_ids)) {
-                                    
-                                    if (!new_loc_indir.at(dest_location_ids).count(0)) {
-
-                                        new_locations_reachable.push_back(location_t(components[0].locations().at(dest_location_ids[0]).is_accept(), tmp_id, name + std::to_string(0), constr));
-                                        new_loc_indir.at(dest_location_ids).insert({0, tmp_id});
-                                        id_location_ids_map.insert({tmp_id, dest_location_ids});
-                                        id_i_map.insert({tmp_id++, 0});
-
-                                    }
-
-                                } else {
-
-                                    new_locations_reachable.push_back(location_t(components[0].locations().at(dest_location_ids[0]).is_accept(), tmp_id, name + std::to_string(0), constr));
-                                    new_loc_indir.insert({dest_location_ids, {}});
-                                    new_loc_indir.at(dest_location_ids).insert({0, tmp_id});
-                                    id_location_ids_map.insert({tmp_id, dest_location_ids});
-                                    id_i_map.insert({tmp_id++, 0});
-
-                                }
-
-
-                            } else {
-
-                                if (new_loc_indir.count(dest_location_ids)) {
-                                    
-                                    if (!new_loc_indir.at(dest_location_ids).count(new_i + 1)) {
-
-                                        new_locations_reachable.push_back(location_t(components[new_i + 1].locations().at(dest_location_ids[new_i + 1]).is_accept(), tmp_id, name + std::to_string(new_i + 1), constr));
-                                        new_loc_indir.at(dest_location_ids).insert({new_i + 1, tmp_id});
-                                        id_location_ids_map.insert({tmp_id, dest_location_ids});
-                                        id_i_map.insert({tmp_id++, new_i + 1});
-
-                                    }
-
-                                } else {
-
-                                    new_locations_reachable.push_back(location_t(components[new_i + 1].locations().at(dest_location_ids[new_i + 1]).is_accept(), tmp_id, name + std::to_string(new_i + 1), constr));
-                                    new_loc_indir.insert({dest_location_ids, {}});
-                                    new_loc_indir.at(dest_location_ids).insert({new_i + 1, tmp_id});
-                                    id_location_ids_map.insert({tmp_id, dest_location_ids});
-                                    id_i_map.insert({tmp_id++, new_i + 1});
-
-                                }
-
-                            }
-
-                        } else {
-
-                            if (new_loc_indir.count(dest_location_ids)) {
-                                
-                                if (!new_loc_indir.at(dest_location_ids).count(new_i)) {
-
-                                    new_locations_reachable.push_back(location_t(components[new_i].locations().at(dest_location_ids[new_i]).is_accept(), tmp_id, name + std::to_string(new_i), constr));
-                                    new_loc_indir.at(dest_location_ids).insert({new_i, tmp_id});
-                                    id_location_ids_map.insert({tmp_id, dest_location_ids});
-                                    id_i_map.insert({tmp_id++, new_i});
-
-                                }
-
-                            } else {
+                        if (new_loc_indir.count(dest_location_ids)) {
+                            
+                            if (!new_loc_indir.at(dest_location_ids).count(new_i)) {
 
                                 new_locations_reachable.push_back(location_t(components[new_i].locations().at(dest_location_ids[new_i]).is_accept(), tmp_id, name + std::to_string(new_i), constr));
-                                new_loc_indir.insert({dest_location_ids, {}});
                                 new_loc_indir.at(dest_location_ids).insert({new_i, tmp_id});
                                 id_location_ids_map.insert({tmp_id, dest_location_ids});
                                 id_i_map.insert({tmp_id++, new_i});
 
                             }
 
-                        }
-
-
-                        if (components[new_i].locations().at(location_ids[new_i]).is_accept()) {
-
-                            if (new_i == components.size() - 1) {
-
-                                new_bdd_edges_reachable.push_back(bdd_edge_t(new_loc_indir.at(location_ids).at(curr_i), new_loc_indir.at(dest_location_ids).at(0), guard, reset, new_bdd_label));
-
-                            } else {
-
-                                new_bdd_edges_reachable.push_back(bdd_edge_t(new_loc_indir.at(location_ids).at(curr_i), new_loc_indir.at(dest_location_ids).at(new_i + 1), guard, reset, new_bdd_label));
-
-                            }
-
                         } else {
 
-                            new_bdd_edges_reachable.push_back(bdd_edge_t(new_loc_indir.at(location_ids).at(curr_i), new_loc_indir.at(dest_location_ids).at(curr_i), guard, reset, new_bdd_label));
+                            new_locations_reachable.push_back(location_t(components[new_i].locations().at(dest_location_ids[new_i]).is_accept(), tmp_id, name + std::to_string(new_i), constr));
+                            new_loc_indir.insert({dest_location_ids, {}});
+                            new_loc_indir.at(dest_location_ids).insert({new_i, tmp_id});
+                            id_location_ids_map.insert({tmp_id, dest_location_ids});
+                            id_i_map.insert({tmp_id++, new_i});
 
                         }
+
+
+
+                        std::vector<location_id_t> old_location_ids = id_location_ids_map.at(new_loc_indir.at(location_ids).at(curr_i));
+
+                        std::string old_name;
+                        for (size_t i = 0; i < components.size(); ++i) {
+                            old_name += components[i].locations().at(old_location_ids[i]).name() + (components[i].locations().at(old_location_ids[i]).is_accept() ? "*" : "") + "_";
+                        }
+
+                        new_bdd_edges_reachable.push_back(bdd_edge_t(new_loc_indir.at(location_ids).at(curr_i), new_loc_indir.at(dest_location_ids).at(new_i), guard, reset, new_bdd_label));
+                        std::cout << "Adding edge from " << new_loc_indir.at(location_ids).at(curr_i) << " (" << old_name + std::to_string(curr_i) << ")" << " -> "  << new_loc_indir.at(dest_location_ids).at(new_i) << " (" << name + std::to_string(new_i) << ")" << std::endl;
 
 
                         size_t dest_id;
 
-                        if (components[new_i].locations().at(location_ids[new_i]).is_accept()) {
-
-                            if (new_i == components.size() - 1) { 
-
-                                dest_id = new_loc_indir.at(dest_location_ids).at(0);
-
-                            } else {
-
-                                dest_id = new_loc_indir.at(dest_location_ids).at(new_i + 1);
-
-                            }
-
-                        } else {
-
-                            dest_id = new_loc_indir.at(dest_location_ids).at(new_i);
-
-                        }
+                        dest_id = new_loc_indir.at(dest_location_ids).at(new_i);
 
                         if (!new_location_ids_expanded.count(dest_id)) {
                             fringe.insert(dest_id);
