@@ -190,6 +190,7 @@ namespace monitaal {
         }
 
         new_locations_reachable.push_back(location_t(components[0].locations().at(location_ids[0]).is_accept(), tmp_id, name + std::to_string(0), constr));
+        std::cout << "Adding location " << tmp_id << (components[0].locations().at(location_ids[0]).is_accept() ?  " *ACCEPTING*" : std::string{}) << std::endl;
 
         new_loc_indir.insert({location_ids, {}});
         new_loc_indir.at(location_ids).insert({0, tmp_id});
@@ -301,19 +302,7 @@ namespace monitaal {
 
                                 if (new_i == components.size() - 1) {
                                     new_i = 0;
-                                } else {
-                                    ++new_i; 
-                                }
-
-                                if (new_i == curr_i) {
                                     full_circle = true;
-                                }
-                            }
-
-                            if (full_circle) {
-
-                                if (new_i == components.size() - 1) {
-                                    new_i = 0;
                                 } else {
                                     ++new_i; 
                                 }
@@ -327,7 +316,8 @@ namespace monitaal {
                             
                             if (!new_loc_indir.at(dest_location_ids).count(new_i)) {
 
-                                new_locations_reachable.push_back(location_t(components[new_i].locations().at(dest_location_ids[new_i]).is_accept(), tmp_id, name + std::to_string(new_i), constr));
+                                new_locations_reachable.push_back(location_t((new_i == 0 ? components[new_i].locations().at(dest_location_ids[new_i]).is_accept() : false), tmp_id, name + std::to_string(new_i), constr));
+                                std::cout << "Adding location " << tmp_id << ((new_i == 0 ? components[new_i].locations().at(dest_location_ids[new_i]).is_accept() : false) ?  " *ACCEPTING*" : std::string{}) << std::endl;
                                 new_loc_indir.at(dest_location_ids).insert({new_i, tmp_id});
                                 id_location_ids_map.insert({tmp_id, dest_location_ids});
                                 id_i_map.insert({tmp_id++, new_i});
@@ -336,7 +326,8 @@ namespace monitaal {
 
                         } else {
 
-                            new_locations_reachable.push_back(location_t(components[new_i].locations().at(dest_location_ids[new_i]).is_accept(), tmp_id, name + std::to_string(new_i), constr));
+                            new_locations_reachable.push_back(location_t((new_i == 0 ? components[new_i].locations().at(dest_location_ids[new_i]).is_accept() : false), tmp_id, name + std::to_string(new_i), constr));
+                            std::cout << "Adding location " << tmp_id << ((new_i == 0 ? components[new_i].locations().at(dest_location_ids[new_i]).is_accept() : false) ?  " *ACCEPTING*" : std::string{}) << std::endl;
                             new_loc_indir.insert({dest_location_ids, {}});
                             new_loc_indir.at(dest_location_ids).insert({new_i, tmp_id});
                             id_location_ids_map.insert({tmp_id, dest_location_ids});
