@@ -96,6 +96,8 @@ int main(int argc, const char ** argv) {
 
     bdd_done();
 
+    spec_in.close();
+
     return 0;
 
 }
