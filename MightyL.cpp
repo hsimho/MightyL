@@ -780,6 +780,8 @@ namespace mightylcpp {
                 monitaal::constraints_t empty_invariant;
                 monitaal::locations_t locations;
 
+                // The current version of MoniTAal only allows 1 initial location
+
                 locations.push_back(monitaal::location_t(false, 2, "s0i", empty_invariant));
                 locations.push_back(monitaal::location_t(true, 0, "s0", empty_invariant));
                 locations.push_back(monitaal::location_t(true, 1, "s1", empty_invariant));
@@ -1797,6 +1799,8 @@ namespace mightylcpp {
                 monitaal::constraints_t empty_invariant;
                 monitaal::locations_t locations;
 
+                // The current version of MoniTAal only allows 1 initial location
+
                 locations.push_back(monitaal::location_t(false, 2, "s0i", empty_invariant));
                 locations.push_back(monitaal::location_t(true, 0, "s0", empty_invariant));
                 locations.push_back(monitaal::location_t(true, 1, "s1", empty_invariant));
@@ -2519,6 +2523,8 @@ namespace mightylcpp {
                     monitaal::bdd_edges_t bdd_edges;
 
                     for (auto i = 0; i < phi->atoms.size(); ++i) {
+
+                        // The current version of MoniTAal only allows 1 initial location
 
                         locations.push_back(monitaal::location_t(false, 1 + phi->atoms.size(), "s0i", empty_invariant));
                         name_id_map.insert({"0i", 1 + phi->atoms.size()});

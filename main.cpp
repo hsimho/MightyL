@@ -24,16 +24,24 @@ using namespace antlr4;
 
 int main(int argc, const char ** argv) {
 
-    const char* spec_file;
-    const char* trace_file;
+    const char* spec_file = NULL;
+    const char* tck_file = NULL;
 
     if (argc >= 2) {
 
         spec_file = argv[1];
 
+        if (argc >= 3) {
+
+            tck_file = argv[2]; 
+
+        }
+
     } else {
 
-        std::cerr << "Usage: demo <in_spec_file>" << std::endl;
+        std::cerr << "Usage: demo <in_spec_file> [out_tck_file]" << std::endl;
+        std::cerr << "A standard fixpoint algorithm based on DBMs (PARDIBAAL) is used by default." << std::endl;
+        std::cerr << "If out_tck_file specified a (flattened) TChecker model will be generated instead." << std::endl;
         return 1;
 
     }
@@ -70,32 +78,49 @@ int main(int argc, const char ** argv) {
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
    
-    std::cout << "Constructing TA (with BDD transitions) took = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << " [ms]" << std::endl;
+    std::cout << "Constructing TA (with BDD transitions) took = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
     // std::cout << pos << std::endl;
 
-    std::chrono::steady_clock::time_point begin2 = std::chrono::steady_clock::now();
-    std::cout << "<<<<<< Calculating fixpoints >>>>>>" << std::endl;
-    auto recurrent = monitaal::Fixpoint::buchi_accept_fixpoint(pos);
 
-    auto initial_state = monitaal::symbolic_state_t(pos.initial_location(), monitaal::Federation::zero(pos.number_of_clocks()));
+    if (tck_file == NULL) {
+
+        std::chrono::steady_clock::time_point begin2 = std::chrono::steady_clock::now();
+        std::cout << "<<<<<< Calculating fixpoints >>>>>>" << std::endl;
+        auto recurrent = monitaal::Fixpoint::buchi_accept_fixpoint(pos);
+
+        auto initial_state = monitaal::symbolic_state_t(pos.initial_location(), monitaal::Federation::zero(pos.number_of_clocks()));
+
+        if (initial_state.is_included_in(monitaal::Fixpoint::reach(recurrent, pos))) {
+
+            std::cout << "\n\n\033[32mSATISFIABLE\033[0m\n\n" << std::endl;
+
+        } else {
+
+            std::cout << "\n\n\033[31mNOT SATISFIABLE\033[0m\n\n" << std::endl;
+
+        }
+
+        std::chrono::steady_clock::time_point end2 = std::chrono::steady_clock::now();
+        std::cout << "Fixpoint took = " << std::chrono::duration_cast<std::chrono::milliseconds>(end2 - begin2).count() << "[ms]" << std::endl;
+
+    } else { 
+
+        std::ofstream tck_out(tck_file, std::ios::trunc);
+        if (!tck_out) {
+
+            std::cerr << "Error: Could not open out_tck_file" << std::endl;
+            return 1;
+
+        }
 
 
-    if (initial_state.is_included_in(monitaal::Fixpoint::reach(recurrent, pos))) {
 
-        std::cout << "\n\n\033[32mSATISFIABLE\033[0m\n\n" << std::endl;
 
-    } else {
-
-        std::cout << "\n\n\033[31mNOT SATISFIABLE\033[0m\n\n" << std::endl;
+        tck_out.close();
 
     }
 
-    std::chrono::steady_clock::time_point end2 = std::chrono::steady_clock::now();
-    std::cout << "Fixpoint took = " << std::chrono::duration_cast<std::chrono::milliseconds>(end2 - begin2).count() << " [ms]" << std::endl;
-
-
     bdd_done();
-
     spec_in.close();
 
     return 0;

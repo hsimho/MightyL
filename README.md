@@ -31,13 +31,16 @@ $ git clone git@github.com:hsimho/MightyL.git
 $ cd MightyL
 ```
 Edit ```CMakeLists.txt``` and modify ```set(ANTLR_EXECUTABLE ...)``` to point to [ANTLR](https://www.antlr.org/download.html)'s .jar file (complete Java binaries jar). Then
-
-```
+```console
 $ git submodule init
 $ git submodule update
 ```
-to check out [BuDDy](https://github.com/SSoelvsten/buddy). Finally,
+to check out [BuDDy](https://github.com/SSoelvsten/buddy). If these do not work, try
+```console
+git submodule add https://github.com/SSoelvsten/buddy external/buddy
 ```
+Finally,
+```console
 $ mkdir build ; cd build
 $ cmake ..
 $ make
