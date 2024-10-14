@@ -2718,7 +2718,7 @@ namespace mightylcpp {
         {   // re-numbering
 
             int i = num_all_props - nnf_formula->props.size();
-            for (const auto & [k, v] : nnf_formula->props) {
+            for (const auto& [k, v] : nnf_formula->props) {
                 nnf_formula->props[k] = ++i;
             }
 
@@ -2747,7 +2747,7 @@ namespace mightylcpp {
 
         std::cout << "\nList of them:\n";
 
-        for (const auto & [k, v] : nnf_formula->props) {
+        for (const auto& [k, v] : nnf_formula->props) {
             std::cout << v << ": " << k << std::endl;
         }
 
@@ -3044,7 +3044,7 @@ namespace mightylcpp {
 
             std::cout << std::endl;
 
-            for (const auto & [k, v] : temporal_components.back().locations()) {
+            for (const auto& [k, v] : temporal_components.back().locations()) {
 
                 std::cout << std::setw(12) << "location: " << std::setw(10) << v.id() << " (" << v.name() << ")" << (v.is_accept() ? " *ACCEPTING*" : "") << std::setw(0) << std::endl;
                 std::cout << std::setw(20) << "# outgoing: " << std::setw(10) << temporal_components.back().bdd_edges_from(k).size() << std::setw(0) << std::endl;
@@ -3102,7 +3102,7 @@ namespace mightylcpp {
 
         std::cout << std::endl;
 
-        for (const auto & [k, v] : varphi.locations()) {
+        for (const auto& [k, v] : varphi.locations()) {
 
             std::cout << std::setw(12) << "location: " << std::setw(10) << v.id() << " (" << v.name() << ")" << (v.is_accept() ? " *ACCEPTING*" : "") << std::setw(0) << std::endl;
             std::cout << std::setw(20) << "# outgoing: " << std::setw(10) << varphi.bdd_edges_from(k).size() << std::setw(0) << std::endl;
@@ -3136,7 +3136,7 @@ namespace mightylcpp {
 
         std::cout << std::endl;
 
-        for (const auto & [k, v] : model.locations()) {
+        for (const auto& [k, v] : model.locations()) {
 
             std::cout << std::setw(12) << "location: " << std::setw(10) << v.id() << " (" << v.name() << ")" << (v.is_accept() ? " *ACCEPTING*" : "") << std::setw(0) << std::endl;
             std::cout << std::setw(20) << "# outgoing: " << std::setw(10) << model.bdd_edges_from(k).size() << std::setw(0) << std::endl;
@@ -3163,7 +3163,7 @@ namespace mightylcpp {
 
         std::cout << std::endl;
 
-        for (const auto & [k, v] : product.locations()) {
+        for (const auto& [k, v] : product.locations()) {
 
             std::cout << std::setw(12) << "location: " << std::setw(10) << v.id() << " (" << v.name() << ")" << (v.is_accept() ? " *ACCEPTING*" : "") << std::setw(0) << std::endl;
             std::cout << std::setw(20) << "# outgoing: " << std::setw(10) << product.bdd_edges_from(k).size() << std::setw(0) << std::endl;
