@@ -59,3 +59,8 @@ $ make
 	year          = 2017,
 }
 ```
+
+## License
+
+LGPL-3.0. The MIT License applies to CMake scripts from "[Getting started with ANTLR in C++](https://github.com/gabriele-tomassetti/antlr-cpp)".
+
